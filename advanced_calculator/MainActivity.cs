@@ -1,4 +1,4 @@
-﻿using Android.App;
+using Android.App;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -24,8 +24,8 @@ namespace advanced_calculator
 
             calcText = FindViewById<TextView>(Resource.Id.calculator_txt_view);
         }
-        [Java.Interop.Export("ButtonClick")]
-        public void ButtonClick(View v)
+        [Java.Interop.Export("ButtonClick")] //xml onclick is defined in java
+        public void ButtonClick(View v) //gets the button attributes from the xml
         {
             Button button = (Button)v;
             if ("0123456789.".Contains(button.Text))
@@ -40,7 +40,7 @@ namespace advanced_calculator
         }
         private void AddDigitOrDP(string value)
         {
-            int index = @operator == null ? 0 : 1; // make chatgpt explain this line
+            int index = @operator == null ? 0 : 1; 
             if (value == "." && numbers[index].Contains("."))
                 return;
             numbers[index] += value;
