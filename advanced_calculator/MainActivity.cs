@@ -40,8 +40,10 @@ namespace advanced_calculator
         }
         private void AddDigitOrDP(string value)
         {
-            int index = @operator == null ? 0 : 1; 
-            if (value == "." && numbers[index].Contains("."))
+            int index = @operator == null ? 0 : 1;
+            if (value == "." && numbers[index] == null)
+                return;
+            if (value == "." && numbers[index].Contains("."))  
                 return;
             numbers[index] += value;
 
@@ -97,6 +99,7 @@ namespace advanced_calculator
         {
             calcText.Text = $"{numbers[0]} {@operator} {numbers[1]}";
         }
+        
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
